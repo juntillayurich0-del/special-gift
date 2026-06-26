@@ -1,0 +1,404 @@
+/* ============================= */
+/* GOOGLE FONTS */
+/* ============================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght=300;400;600;700&family=Great+Vibes&display=swap');
+
+/* ============================= */
+/* RESET */
+/* ============================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top, #4a1b4f 0%, #170814 45%, #070508 100%);
+    color: white;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* ============================= */
+/* STARS */
+/* ============================= */
+
+#stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 70px 70px;
+    opacity: .12;
+}
+
+/* ============================= */
+/* PARTICLES */
+/* ============================= */
+
+#particles {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: radial-gradient(circle, #ff9fc6 2px, transparent 3px);
+    background-size: 160px 160px;
+    opacity: .25;
+    animation: particles 20s linear infinite;
+}
+
+@keyframes particles {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-160px); }
+}
+
+/* ============================= */
+/* MUSIC BUTTON */
+/* ============================= */
+
+#musicButton {
+    display: none; /* 👈 Keeps it perfectly hidden until the final 10 seconds */
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, .15);
+    background: rgba(255, 255, 255, .08);
+    backdrop-filter: blur(10px);
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: .4s;
+    z-index: 100;
+}
+
+#musicButton:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 30px hotpink;
+}
+
+/* ============================= */
+/* MAIN */
+/* ============================= */
+
+#scene {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ============================= */
+/* LEFT PANEL */
+/* ============================= */
+
+#leftPanel {
+    width: 40%;
+}
+
+.title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 55px;
+    color: #ffd5e8;
+}
+
+.name {
+    font-family: 'Great Vibes', cursive;
+    font-size: 95px;
+    color: #ff8fc0;
+    text-shadow: 0 0 20px hotpink, 0 0 60px hotpink;
+}
+
+.subtitle {
+    margin-top: 15px;
+    font-size: 24px;
+    color: #f7d7e5;
+}
+
+/* ============================= */
+/* COUNTDOWN */
+/* ============================= */
+
+#countdown {
+    margin-top: 50px;
+    display: flex;
+    gap: 20px;
+}
+
+.timeBox {
+    width: 110px;
+    height: 110px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, .05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, .08);
+}
+
+.timeBox span {
+    font-size: 42px;
+    color: #ffb3d2;
+}
+
+.timeBox small {
+    margin-top: 8px;
+    letter-spacing: 2px;
+    color: #ffe3ef;
+}
+
+/* ============================= */
+/* CENTER PANEL */
+/* ============================= */
+
+#centerPanel {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#lotusContainer {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Glow Effect Behind Flower */
+#glow {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 120, 180, .95), rgba(255, 120, 180, .2), transparent);
+    filter: blur(35px);
+    animation: glow 3s ease-in-out infinite alternate;
+    z-index: 1;
+}
+
+@keyframes glow {
+    from { transform: scale(.8); opacity: .5; }
+    to { transform: scale(1.3); opacity: 1; }
+}
+
+/* ============================= */
+/* THE LOTUS FLOWER ENGINE */
+/* ============================= */
+
+#lotus {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+/* Base style for every single petal */
+.petal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 130px;
+    background: linear-gradient(to top, #ff7ba9, #ffd1e3);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+    opacity: 0; /* Starts hidden until JS calculations run */
+    
+    /* Anchors transform rotation to bottom center of the petal shape */
+    transform-origin: center bottom; 
+    
+    /* Smooth transitions when JavaScript updates the scale and rotation every second */
+    transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s ease;
+}
+
+/* The Glowing Center Core */
+.center-core {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: radial-gradient(circle, #fffbbf 20%, #ffdf6d 60%, #ffa344 100%);
+    border-radius: 50%;
+    z-index: 10;
+    box-shadow: 0 0 25px #ffea79;
+    transform: scale(0);
+    transition: transform 1s ease;
+}
+
+/* --- LAYER DISTRIBUTIONS --- */
+
+.petal.inner {
+    width: 50px;
+    height: 110px;
+    z-index: 5;
+}
+.petal.inner.petal-1 { --target-rot: 15deg;  animation-delay: 3s; }
+.petal.inner.petal-2 { --target-rot: -15deg; animation-delay: 3.3s; }
+.petal.inner.petal-3 { --target-rot: 45deg;  animation-delay: 3.6s; }
+.petal.inner.petal-4 { --target-rot: -45deg; animation-delay: 3.9s; }
+
+.petal.mid {
+    width: 65px;
+    height: 130px;
+    z-index: 4;
+}
+.petal.mid.petal-1 { --target-rot: 30deg;  animation-delay: 1.5s; }
+.petal.mid.petal-2 { --target-rot: -30deg; animation-delay: 1.8s; }
+.petal.mid.petal-3 { --target-rot: 60deg;  animation-delay: 2.1s; }
+.petal.mid.petal-4 { --target-rot: -60deg; animation-delay: 2.4s; }
+
+.petal.outer {
+    width: 75px;
+    height: 145px;
+    z-index: 3;
+    background: linear-gradient(to top, #e05387, #ff9ec4);
+}
+.petal.outer.petal-1 { --target-rot: 45deg;  animation-delay: 0s; }
+.petal.outer.petal-2 { --target-rot: -45deg; animation-delay: 0.2s; }
+.petal.outer.petal-3 { --target-rot: 85deg;  animation-delay: 0.5s; }
+.petal.outer.petal-4 { --target-rot: -85deg; animation-delay: 0.8s; }
+
+
+/* ============================= */
+/* CLICK TEXT */
+/* ============================= */
+
+#clickText {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #ffd5e8;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    50% { opacity: .4; }
+}
+
+/* ============================= */
+/* LETTER */
+/* ============================= */
+
+#letterSection {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: 1s;
+    z-index: 200;
+}
+
+#letter {
+    width: 650px;
+    padding: 45px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, .08);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, .12);
+    box-shadow: 0 0 50px rgba(255, 120, 180, .25);
+}
+
+#letter h2 {
+    font-family: 'Great Vibes';
+    text-align: center;
+    font-size: 55px;
+    color: #ffd6eb;
+}
+
+#letter p {
+    margin-top: 25px;
+    line-height: 2;
+    font-size: 23px;
+    text-align: center;
+    color: #fff4fa;
+}
+
+/* ============================= */
+/* FLOWERS */
+/* ============================= */
+
+#flowerContainer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
+
+/* ============================= */
+/* MOBILE RESPONSIVENESS */
+/* ============================= */
+
+@media(max-width:900px) {
+    #scene {
+        flex-direction: column;
+        text-align: center;
+    }
+    #leftPanel {
+        width: 100%;
+    }
+    #centerPanel {
+        width: 100%;
+        margin-top: 40px;
+    }
+    #countdown {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .title {
+        font-size: 42px;
+    }
+    .name {
+        font-size: 70px;
+    }
+    #lotusContainer {
+        width: 350px;
+        height: 350px;
+    }
+}
+#closeLetterBtn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #fff;
+    padding: 10px 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 20px;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+#closeLetterBtn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 1px;
+}
+#musicButton {
+    display: none; /* 👈 This keeps it hidden until the final 10 seconds */
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    /* ... keep any other styling you already have here ... */
+}

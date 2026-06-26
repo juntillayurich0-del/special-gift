@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>For My Love ❤️</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght=300;400;600;700&family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div id="stars"></div>
+    <div id="particles"></div>
+
+    <audio id="bgMusic" preload="auto">
+      <source src="assets/music.mp3" type="audio/mpeg" />
+    </audio>
+    <button id="musicButton">♪</button>
+
+    <main id="scene">
+      <section id="leftPanel">
+        <h2 class="title">For You,</h2>
+
+        <h1 class="name">My Love</h1>
+
+        <p class="subtitle">Something beautiful is about to bloom...</p>
+
+        <div id="countdown">
+          <div class="timeBox">
+            <span id="days">00</span>
+            <small>Days</small>
+          </div>
+
+          <div class="timeBox">
+            <span id="hours">00</span>
+            <small>Hours</small>
+          </div>
+
+          <div class="timeBox">
+            <span id="minutes">00</span>
+            <small>Minutes</small>
+          </div>
+
+          <div class="timeBox">
+            <span id="seconds">00</span>
+            <small>Seconds</small>
+          </div>
+        </div>
+      </section>
+
+      <section id="centerPanel">
+        <div id="lotusContainer">
+          <div id="glow"></div>
+
+          <div id="lotus">
+            <div class="center-core"></div>
+
+            <div class="petal inner petal-1"></div>
+            <div class="petal inner petal-2"></div>
+            <div class="petal inner petal-3"></div>
+            <div class="petal inner petal-4"></div>
+
+            <div class="petal mid petal-1"></div>
+            <div class="petal mid petal-2"></div>
+            <div class="petal mid petal-3"></div>
+            <div class="petal mid petal-4"></div>
+
+            <div class="petal outer petal-1"></div>
+            <div class="petal outer petal-2"></div>
+            <div class="petal outer petal-3"></div>
+            <div class="petal outer petal-4"></div>
+          </div>
+        </div>
+
+        <p id="clickText">Click anywhere to see the magic ✨</p>
+      </section>
+    </main>
+
+    <section id="letterSection">
+      <div id="letter">
+        <h2>My Dearest ❤️</h2>
+
+        <p id="message">
+          Happy 19th Birthday. Thank you for being part of my life. Every smile,
+          every laugh, every memory with you is something I will always
+          treasure. I hope today reminds you just how loved you truly are. I
+          love you. Forever yours.
+        </p>
+
+        <!-- ADD THIS LINE RIGHT HERE -->
+        <button id="closeLetterBtn">Close Letter ✨</button>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
