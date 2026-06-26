@@ -351,30 +351,76 @@ body {
 /* ============================= */
 
 @media(max-width:900px) {
+    body {
+        overflow-y: auto; /* 📱 Allows vertical scrolling on phones so nothing gets cut off */
+        height: auto;
+        min-height: 100vh;
+        padding: 40px 10px; /* Gives some breathing room at the top and bottom */
+    }
+
     #scene {
         flex-direction: column;
         text-align: center;
+        justify-content: center;
+        width: 100%;
     }
+
     #leftPanel {
         width: 100%;
+        margin-bottom: 20px;
     }
+
     #centerPanel {
         width: 100%;
-        margin-top: 40px;
+        margin-top: 10px;
     }
+
+    /* 🔢 SLEEK ONE-ROW COUNTDOWN FOR PHONES */
     #countdown {
         justify-content: center;
-        flex-wrap: wrap;
+        gap: 8px; /* Tighter gaps for smaller screens */
+        margin-top: 30px;
     }
-    .title {
-        font-size: 42px;
+
+    .timeBox {
+        width: 75px;  /* Scaled down from 110px so all 4 fit in one clean row */
+        height: 75px; /* Scaled down from 110px */
+        border-radius: 12px;
     }
-    .name {
-        font-size: 70px;
+
+    .timeBox span {
+        font-size: 26px; /* Slightly smaller numbers */
     }
+
+    .timeBox small {
+        font-size: 11px;
+        letter-spacing: 0px;
+        margin-top: 2px;
+    }
+
+    /* 🌸 COMPACT FLOWER FOR PHONES */
     #lotusContainer {
-        width: 350px;
-        height: 350px;
+        width: 320px;
+        height: 320px;
+        margin: 0 auto;
+    }
+
+    .title {
+        font-size: 38px;
+    }
+
+    .name {
+        font-size: 65px;
+    }
+    
+    #letter {
+        width: 95%; 
+        padding: 25px; 
+    }
+
+    .login-box {
+        width: 95%;
+        padding: 25px;
     }
 }
 #closeLetterBtn {
